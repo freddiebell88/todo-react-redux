@@ -1,13 +1,11 @@
 import { TodoItem } from "./todoItem";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 export function TodoList() {
-    const todos = [
-        { id: 1, title: 'todo1', completed: false },
-		{ id: 2, title: 'todo2', completed: false },
-		{ id: 3, title: 'todo3', completed: true },
-		{ id: 4, title: 'todo4', completed: false },
-		{ id: 5, title: 'todo5', completed: false },
-    ];
+    // useSelector accepts a function and returns us data based on that function
+    const todos = useSelector((state) => state.todos);
+    // this accepts the state which is passed in by Redux and state.todos gets all the todos and assigns all the todos from state to the todos variable
 
     return (
         <ul>

@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// the createSlice function will give us back some stuff and assign it to the todoSlice variable
 export const todoSlice = createSlice({
     name: 'todos',
     initialState: [
@@ -9,6 +10,7 @@ export const todoSlice = createSlice({
 		{ id: 4, title: 'todo4', completed: false },
 		{ id: 5, title: 'todo5', completed: false },
     ],
+    // the reducer responds to the action, takes the current state, and creates new state based on the action payload
     reducers: {
         addTodo: (state, action) => {
             const todo = {
@@ -17,10 +19,17 @@ export const todoSlice = createSlice({
                 completed: false,
             };
             state.push(todo)
+        },
+        toggleComplete: (state, action) => {
+            const index = state.findIndex((todo) => todo.id === action.payload.id);
+            state[index].completed = action.payload.completed;
+        },
+        deleteTodo: (state, action) => {
+            return state.filter((todo) => todo.id !== action.payload.id)
         }
     }
 })
 
-export const { addTodo } = todoSlice.actions;
+export const { addTodo, toggleComplete, deleteTodo } = todoSlice.actions;
 
 export default todoSlice.reducer
