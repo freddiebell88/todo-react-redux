@@ -1,6 +1,7 @@
 import { TodoItem } from "./todoItem";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+// import { createSelector } from "@reduxjs/toolkit";
 
 export function TodoList() {
     // useSelector accepts a function and returns us data based on that function
